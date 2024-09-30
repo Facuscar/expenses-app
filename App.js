@@ -8,7 +8,7 @@ import ManageExpensesScreen from "./screens/ManageExpensesScreen";
 import RecentExpensesScreen from "./screens/RecentExpensesScreen";
 import AllExpensesScreen from "./screens/AllExpensesScreen";
 import { GlobalStyles } from './constants/styles';
-import IconButton from './components/ExpensesOutput/IconButton';
+import IconButton from './components/IconButton';
 
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
