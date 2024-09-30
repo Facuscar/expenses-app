@@ -16,16 +16,16 @@ const ManageExpenses = ({ route, navigation }) => {
     });
   }, []);
 
-  const handleDeleteItem = () => {
-
-  }
-
   const handleCancel = () => {
-
+    navigation.goBack();
   }
 
   const handleConfirm = () => {
+    handleCancel();
+  }
 
+  const handleDeleteItem = () => {
+    handleCancel();
   }
 
   return (
