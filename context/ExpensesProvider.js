@@ -1,7 +1,7 @@
 import { createContext, useReducer } from "react"
 
 const DUMMY_DATA = [
-  { id: "e1", description: "Groceries", amount: 75.99, date: new Date(2024, 8, 15) },
+  { id: "e1", description: "Groceries", amount: 75.99, date: new Date(2024, 10, 15) },
   { id: "e2", description: "Internet Bill", amount: 45.50, date: new Date(2024, 8, 10) },
   { id: "e3", description: "Gym Membership", amount: 25.00, date: new Date(2024, 8, 5) },
   { id: "e4", description: "Electricity Bill", amount: 110.20, date: new Date(2024, 7, 30) },
