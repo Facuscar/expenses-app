@@ -1,9 +1,9 @@
 import { StyleSheet, Text, TextInput, View } from "react-native"
 import { GlobalStyles } from "../../../constants/styles";
 
-const Input = ({ label, textInputProps }) => {
+const Input = ({ label, textInputProps, newStyle }) => {
   return (
-    <View style={styles.inputWrapper}>
+    <View style={[styles.inputWrapper, newStyle]}>
       <Text style={styles.label}>{label}</Text>
       <TextInput style={[styles.input, textInputProps.multiline && styles.multilineInput]} {...textInputProps} />
     </View>
