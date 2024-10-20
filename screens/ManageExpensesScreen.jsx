@@ -20,22 +20,21 @@ const ManageExpenses = ({ route, navigation }) => {
 
   const handleCancel = () => {
     navigation.goBack();
-    expensesContext.deleteExpense(expenseId)
   }
 
-  const handleConfirm = () => {
-    const dummyExpense = { description: 'test', amount: 19.99, date: new Date('2024-10-16')};
+  const handleConfirm = (expenseData) => {
+    isEditing ? expensesContext.updateExpense(expenseId, expenseData) : expensesContext.addExpense(expenseData) 
     handleCancel();
-    isEditing ? expensesContext.updateExpense(expenseId, dummyExpense) : expensesContext.addExpense(dummyExpense) 
   }
 
   const handleDeleteItem = () => {
+    expensesContext.deleteExpense(expenseId)
     handleCancel();
   }
 
   return (
     <View style={styles.container}>
-      <ExpenseForm onCancel={handleCancel} isEditing={isEditing} />
+      <ExpenseForm onCancel={handleCancel} isEditing={isEditing} onSubmit={handleConfirm} />
       {isEditing && (
         <View style={styles.deleteContainer}>
           <IconButton icon="trash" color={GlobalStyles.colors.error500} size={36} onPress={handleDeleteItem} />
