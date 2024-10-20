@@ -19,7 +19,7 @@ const ExpenseForm = () => {
         onChangeText: () => {},
       }} />
       <Input label="Description" textInputProps={{
-        
+        multiline: true,
       }} />
     </View>
   )
