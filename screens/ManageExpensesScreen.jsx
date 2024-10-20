@@ -3,7 +3,6 @@ import { ExpensesContext } from "../context/ExpensesProvider";
 import { StyleSheet, View } from "react-native";
 import IconButton from "../components/IconButton"
 import { GlobalStyles } from "../constants/styles";
-import Button from "../components/Button";
 import ExpenseForm from "../components/ExpenseForm";
 
 const ManageExpenses = ({ route, navigation }) => {
@@ -36,11 +35,7 @@ const ManageExpenses = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <ExpenseForm />
-      <View style={styles.buttonsContainer}>
-        <Button mode="flat" onPress={handleCancel} style={styles.button}>Cancel</Button>
-        <Button onPress={handleConfirm} style={styles.button}>{isEditing ? 'Update' : 'Add'}</Button>
-      </View>
+      <ExpenseForm onCancel={handleCancel} isEditing={isEditing} />
       {isEditing && (
         <View style={styles.deleteContainer}>
           <IconButton icon="trash" color={GlobalStyles.colors.error500} size={36} onPress={handleDeleteItem} />
@@ -65,13 +60,4 @@ const styles = StyleSheet.create({
     borderTopColor: GlobalStyles.colors.primary200,
     alignItems: 'center',
   },
-  buttonsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  button: {
-    minWidth: 120,
-    marginHorizontal: 8,
-  }
 })
