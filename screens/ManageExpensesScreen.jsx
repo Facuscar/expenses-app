@@ -11,6 +11,7 @@ const ManageExpenses = ({ route, navigation }) => {
 
   const isEditing = !!expenseId;
 
+  const selectedExpense = expensesContext.expenses.find((expense) => expense.id === expenseId);
   
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -34,7 +35,7 @@ const ManageExpenses = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <ExpenseForm onCancel={handleCancel} isEditing={isEditing} onSubmit={handleConfirm} />
+      <ExpenseForm onCancel={handleCancel} isEditing={isEditing} onSubmit={handleConfirm} selectedExpense={selectedExpense} />
       {isEditing && (
         <View style={styles.deleteContainer}>
           <IconButton icon="trash" color={GlobalStyles.colors.error500} size={36} onPress={handleDeleteItem} />

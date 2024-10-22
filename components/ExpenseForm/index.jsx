@@ -4,8 +4,19 @@ import Input from "./Input";
 import Button from "../Button";
 import { useState } from "react";
 
-const ExpenseForm = ({ onCancel, onSubmit, isEditing }) => {
-  const [inputValues, setInputValues] = useState({ amount: '', date: '', description: ''});
+const ExpenseForm = ({ onCancel, onSubmit, isEditing, selectedExpense }) => {
+  console.log(selectedExpense);
+  
+  const initialExpense = selectedExpense ? {
+    amount: selectedExpense.amount.toString(),
+    date: selectedExpense.date.toISOString().slice(0, 10),
+    description: selectedExpense.description
+  } : {
+    amount: '',
+    date: '',
+    description: ''
+  }
+  const [inputValues, setInputValues] = useState(initialExpense);
 
   const inputChangedHandler = (inputIdentifier, enteredValue) => {
     setInputValues((prevState) => {
