@@ -3,6 +3,7 @@ import { Alert, StyleSheet, Text, View } from "react-native"
 import Input from "./Input";
 import Button from "../Button";
 import { useState } from "react";
+import { GlobalStyles } from "../../constants/styles";
 
 const ExpenseForm = ({ onCancel, onSubmit, isEditing, selectedExpense }) => {
   
@@ -59,6 +60,7 @@ const ExpenseForm = ({ onCancel, onSubmit, isEditing, selectedExpense }) => {
       <View style={styles.inputsRow}>
         <Input
           label="Amount"
+          invalid={!inputs.amount.isValid}
           textInputProps={{ 
             keyboardType: "decimal-pad",
             onChangeText: (enteredText) => inputChangedHandler('amount', enteredText),
@@ -68,6 +70,7 @@ const ExpenseForm = ({ onCancel, onSubmit, isEditing, selectedExpense }) => {
           />
         <Input
           label="Date" 
+          invalid={!inputs.date.isValid}
           textInputProps={{
             placeholder: "YYYY-MM-DD",
             maxLength: 10,
@@ -77,13 +80,17 @@ const ExpenseForm = ({ onCancel, onSubmit, isEditing, selectedExpense }) => {
           newStyle={styles.rowInput}
           />
       </View>
-      <Input label="Description" textInputProps={{
-        multiline: true,
-        onChangeText: (enteredText) => inputChangedHandler('description', enteredText),
-        value: inputs.description.value,
-      }} />
+      <Input
+        label="Description" 
+        invalid={!inputs.description.isValid}
+        textInputProps={{
+          multiline: true,
+          onChangeText: (enteredText) => inputChangedHandler('description', enteredText),
+          value: inputs.description.value,
+        }} 
+      />
       {formIsInvalid && (
-        <Text>
+        <Text style={styles.errorText}>
           Invalid input values, please check input data
         </Text>
         )}
@@ -123,5 +130,10 @@ const styles = StyleSheet.create({
   button: {
     minWidth: 120,
     marginHorizontal: 8,
+  },
+  errorText: {
+    textAlign: 'center',
+    color: GlobalStyles.colors.errorText,
+    margin: 8,
   }
 })
